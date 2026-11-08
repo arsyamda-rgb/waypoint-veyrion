@@ -1,0 +1,46 @@
+# ==== ITEM WAYSTONE ====
+# Item dari ItemsAdder (contents/waystones). Kalau ItemsAdder tidak ada / id salah,
+# plugin pakai material + custom-model-data di bawah.
+# Material harus BARRIER agar jadi waystone 2 blok tinggi tak terlihat (model 3D digambar ItemDisplay).
+item:
+  itemsadder: "waystones:waystone_item"
+  material: BARRIER
+  custom-model-data: 770100
+  name: "<gradient:#00f5ff:#a855f7><bold>Waystone</bold></gradient>"
+  lore:
+    - "<gray>Pasang di tanah (butuh 2 blok kosong ke atas)."
+    - "<gray>Klik kanan untuk aktivasi."
+    - "<dark_gray>Hubungkan kerajaan-kerajaanmu."
+
+# ==== MODEL 3D (ItemsAdder) ====
+visuals:
+  enabled: true            # butuh plugin ItemsAdder + folder contents/waystones
+  range: 64                # model muncul kalau ada pemain sedekat ini
+  view-range: 1.0
+  fallback-material: PAPER # dipakai kalau id ItemsAdder tidak ketemu
+  parts:
+    base:   { ia: "waystones:waystone_base",   cmd: 770101 }
+    runes:  { ia: "waystones:waystone_runes",  cmd: 770102 }
+    orb:    { ia: "waystones:waystone_orb",    cmd: 770103 }
+    ring:   { ia: "waystones:waystone_ring",   cmd: 770104 }
+    circle: { ia: "waystones:waystone_circle", cmd: 770105 }
+    beam:   { ia: "waystones:waystone_beam",   cmd: 770106 }
+
+# ==== TELEPORT SINEMATIK ====
+cinematic:
+  enabled: true            # false = teleport lama (tanpa kamera spectator)
+  allow-skip: true         # sneak untuk melewati
+  block-commands: true     # blok command selama sinematik
+  letterbox: false         # bar hitam atas-bawah (widescreen). Default mati.
+  letterbox-size: 0.12     # tebal bar (fraksi tinggi layar)
+  smoothing-ticks: 3       # makin besar makin halus tapi makin "ngambang"; naikkan kalau kamera patah-patah
+  departure-ticks: 110     # durasi adegan berangkat (20 tick = 1 detik)
+  arrival-ticks: 110       # durasi adegan mendarat
+  arrival-height: 36       # tinggi awal kamera di atas waystone tujuan
+
+gui:
+  # Boleh isi glyph font ItemsAdder langsung di title untuk background custom.
+  title: "<gradient:#00f5ff:#a855f7><bold>Jaringan Waystone</bold></gradient>"
+
+max-name-length: 24
+naming-timeout-seconds: 60
